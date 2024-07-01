@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<section class="register-section">
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Email, Username o Telefono</mat-label>
+      <input matInput formControlName="uid" type="text" />
+      <mat-error *ngIf="loginForm.get('uid')?.errors?.['required']">El campo es requerido.</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" />
+      <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</mat-error>
+      <mat-error *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</mat-error>
+    </mat-form-field>
+
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</section>

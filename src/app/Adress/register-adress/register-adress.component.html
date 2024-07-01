@@ -1,0 +1,57 @@
+<app-logged-navbar></app-logged-navbar>
+<section class="register-section">
+    <form [formGroup]="AdressForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street" type="text" />
+        <mat-error *ngIf="AdressForm.get('street')?.hasError('required')">Street is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Suburb</mat-label>
+        <input matInput formControlName="suburb" type="text" />
+        <mat-error *ngIf="AdressForm.get('suburb')?.hasError('required')">Suburb is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput formControlName="city" type="text" />
+        <mat-error *ngIf="AdressForm.get('city')?.hasError('required')">City is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state" type="text" />
+        <mat-error *ngIf="AdressForm.get('state')?.hasError('required')">State is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Country</mat-label>
+        <input matInput formControlName="country" type="text" />
+        <mat-error *ngIf="AdressForm.get('country')?.hasError('required')">Country is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Zip Code</mat-label>
+        <input matInput formControlName="zip_code" type="number" />
+        <mat-error *ngIf="AdressForm.get('zip_code')?.hasError('required')">Zip Code is required.</mat-error>
+        <mat-error *ngIf="AdressForm.get('zip_code')?.hasError('maxlength')">Zip Code must be maximum 5 characters.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Latitude</mat-label>
+        <input matInput formControlName="latitude" type="number" />
+        <mat-error *ngIf="AdressForm.get('latitude')?.hasError('required')">Latitude is required.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Longitude</mat-label>
+        <input matInput formControlName="longitude" type="number" />
+        <mat-error *ngIf="AdressForm.get('longitude')?.hasError('required')">Longitude is required.</mat-error>
+      </mat-form-field>
+      <app-map (locationSelected)="onMapLocationSelected($event)"></app-map>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="AdressForm.invalid">Register</button>
+    </form>
+    
+  </section>

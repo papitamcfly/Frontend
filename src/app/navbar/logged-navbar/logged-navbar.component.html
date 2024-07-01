@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-button routerLink="/Dashboard">
+        <img src="../../assets/capybara-svgrepo-com.svg" alt="">
+      </button>
+      <span>Capiapp</span>
+      <span class="spacer"></span>
+      <button mat-button (click)="logout()">Logout</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav" fixedInViewport>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/registerAdress">Agregar direccion</a>
+        <a mat-list-item routerLink="/personalAdress">Tus direcciones</a>
+        <a mat-list-item routerLink="/allAdress" *ngIf="rolId == 1">Ver todas</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
